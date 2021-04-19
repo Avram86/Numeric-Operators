@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Numeric_Operators
 {
@@ -7,6 +8,7 @@ namespace Numeric_Operators
         static void Main(string[] args)
         {
             
+
         }
         public static void DivisionForIntegers_RetursIntegers()
         {
@@ -87,6 +89,95 @@ namespace Numeric_Operators
             4
             8
             16*/
+        }
+
+        public static void DivisionForFloat()
+        {
+            float a = 3;
+            float b = 2;
+
+            Console.WriteLine(a / b);
+        }
+
+        public static void ImmutableStrings()
+        {
+            string msg1 = "Hello world";
+            string msg2 = msg1;
+
+            Console.WriteLine(msg1);
+            Console.WriteLine(msg2);
+
+
+            msg1 = msg1 + "123";
+            Console.WriteLine(msg1);
+            Console.WriteLine(msg2);
+        }
+
+        public static void StringPunctCompare()
+        {
+            string msg1 = "ana";
+            string msg2 = "Ana";
+
+            Console.WriteLine("Comparison in current culture");
+            if (string.Compare(msg1, msg2, StringComparison.CurrentCulture) < 0)
+            {
+                Console.WriteLine("msg1<msg2");
+            }
+            if (string.Compare(msg1, msg2, StringComparison.CurrentCulture) == 0)
+            {
+                Console.WriteLine("msg1=msg2");
+            }
+            else
+            {
+                Console.WriteLine("msg1>msg2");
+            }
+            //literele mici sunt inaintea celor mari
+
+            Console.WriteLine("Comparison in ordinal(coduri de caractere)");
+            if (string.Compare(msg1, msg2, StringComparison.Ordinal) < 0)
+            {
+                Console.WriteLine("msg1<msg2");
+            }
+            if (string.Compare(msg1, msg2, StringComparison.Ordinal) == 0)
+            {
+                Console.WriteLine("msg1=msg2");
+            }
+            else
+            {
+                Console.WriteLine("msg1>msg2");
+            }
+            //invers
+
+            Console.WriteLine("Comparison in OrdinalIgnoreCase(lit mari si mici au aceeasi ordine)");
+            if (string.Compare(msg1, msg2, StringComparison.OrdinalIgnoreCase) < 0)
+            {
+                Console.WriteLine("msg1<msg2");
+            }
+            if (string.Compare(msg1, msg2, StringComparison.OrdinalIgnoreCase) == 0)
+            {
+                Console.WriteLine("msg1=msg2");
+            }
+            else
+            {
+                Console.WriteLine("msg1>msg2");
+            }
+            //egal
+        }
+
+        public static void StringPunctEqual()
+        {
+            string msg1 = "file";
+            string msg2 = "FILE";
+
+            bool areEqual1 = string.Equals(msg1, msg2, StringComparison.OrdinalIgnoreCase);
+            Console.WriteLine("areEqual1= " + areEqual1);
+            //outcome: true
+
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("tr-TR");
+            bool areEqual2 = string.Equals(msg1, msg2, StringComparison.CurrentCultureIgnoreCase);
+            Console.WriteLine("areEqual2= " + areEqual2);
+            //outcome: false
+
         }
 
     }
